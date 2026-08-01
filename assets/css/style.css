@@ -21,6 +21,10 @@ html, body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   background: var(--black);
@@ -143,6 +147,7 @@ button {
 }
 
 .hero__card {
+  display: block;
   position: absolute;
   right: 20px;
   top: 60%;
@@ -424,12 +429,14 @@ button {
 }
 
 .btn {
+  display: inline-block;
   border: none;
   border-radius: var(--radius-full, 999px);
   padding: 16px 26px;
   font-size: 1rem;
   font-weight: 700;
   font-family: inherit;
+  text-align: center;
 }
 
 .btn--light {
@@ -493,6 +500,105 @@ button {
   font-weight: 500;
   color: rgba(255,255,255,0.75);
   line-height: 1.4;
+}
+
+/* ============ BARRA DE BÚSQUEDA ============ */
+.search-bar {
+  background: var(--black);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+}
+
+.search-bar.is-open {
+  max-height: 72px;
+}
+
+.search-bar__form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 18px;
+}
+
+.search-bar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 2px;
+  outline: none;
+}
+
+.search-bar__input::placeholder {
+  color: rgba(255,255,255,0.55);
+}
+
+.search-bar__close {
+  background: none;
+  border: none;
+  padding: 6px;
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* ============ MENÚ OVERLAY ============ */
+body.no-scroll {
+  overflow: hidden;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-overlay__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+
+.logo--nav {
+  font-size: 1.6rem;
+}
+
+.nav-overlay__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 /* ============ WHATSAPP FLOTANTE ============ */

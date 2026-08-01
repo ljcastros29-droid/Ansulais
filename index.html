@@ -9,14 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
-<div class="page">
+<div class="page" id="top">
 
   <!-- HEADER -->
   <header class="site-header">
-    <button class="icon-btn" type="button" aria-label="Abrir menú">
+    <button class="icon-btn" type="button" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navOverlay">
       <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 1H22" stroke="white" stroke-width="2" stroke-linecap="round"/>
         <path d="M0 8H22" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -24,18 +25,49 @@
       </svg>
     </button>
 
-    <a href="#" class="logo logo--header" aria-label="Ansulais">
+    <a href="#top" class="logo logo--header" aria-label="Ansulais">
       <img src="assets/img/logo-icon-white.png" alt="" class="logo-icon">
       <span>nsulais</span>
     </a>
 
-    <button class="icon-btn" type="button" aria-label="Buscar">
+    <button class="icon-btn" type="button" id="searchBtn" aria-label="Buscar" aria-expanded="false" aria-controls="searchBar">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="8.5" cy="8.5" r="7" stroke="white" stroke-width="2"/>
         <path d="M18 18L14 14" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
   </header>
+
+  <!-- BARRA DE BÚSQUEDA -->
+  <div class="search-bar" id="searchBar">
+    <form class="search-bar__form" id="searchForm" role="search">
+      <input type="search" id="searchInput" class="search-bar__input" placeholder="Buscar muebles…" aria-label="Buscar muebles" autocomplete="off">
+      <button type="button" class="search-bar__close" id="searchClose" aria-label="Cerrar búsqueda">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L15 15M15 1L1 15" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- MENÚ OVERLAY -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <button type="button" class="nav-overlay__close" id="navClose" aria-label="Cerrar menú">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L19 19M19 1L1 19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="logo logo--nav" aria-hidden="true">
+      <img src="assets/img/logo-icon-white.png" alt="" class="logo-icon">
+      <span>nsulais</span>
+    </div>
+    <ul class="nav-overlay__links">
+      <li><a href="#top" class="nav-link">Inicio</a></li>
+      <li><a href="#categorias" class="nav-link">Catálogo</a></li>
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="https://wa.me/message/ISVNRLUQCE27G1" target="_blank" rel="noopener" class="nav-link">Contáctanos</a></li>
+    </ul>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
@@ -50,7 +82,7 @@
       <p class="hero__tagline">Muebles tapizados y de madera hechos para acompañar tu día a día.</p>
     </div>
 
-    <div class="hero__card">
+    <a class="hero__card" href="#categorias">
       <div class="hero__card-photo">
         <img src="assets/img/sofa-catalogo.jpg" alt="Sofá seccional Ansulais">
       </div>
@@ -63,11 +95,11 @@
           </svg>
         </span>
       </div>
-    </div>
+    </a>
   </section>
 
   <!-- CATEGORIAS -->
-  <section class="categories">
+  <section class="categories" id="categorias">
     <h2 class="categories__title">¿Qué buscas el día<br>de hoy?</h2>
 
     <div class="categories__scroll">
@@ -89,7 +121,7 @@
   </section>
 
   <!-- NOSOTROS -->
-  <section class="nosotros">
+  <section class="nosotros" id="nosotros">
     <div class="nosotros__blob-wrap">
       <img class="nosotros__blob" src="assets/img/nosotros-blob.jpg" alt="">
       <h2 class="nosotros__title">nosotros</h2>
@@ -128,8 +160,8 @@
     <div class="cta">
       <h2>¿Listo para encontrar el mueble perfecto para tu hogar?</h2>
       <div class="cta__buttons">
-        <button class="btn btn--light" type="button">Ver catálogo</button>
-        <button class="btn btn--dark" type="button">Contactanos</button>
+        <a class="btn btn--light" href="#categorias">Ver catálogo</a>
+        <a class="btn btn--dark" href="https://wa.me/message/ISVNRLUQCE27G1" target="_blank" rel="noopener">Contactanos</a>
       </div>
     </div>
   </section>
@@ -141,9 +173,9 @@
 
     <div class="footer__grid">
       <nav class="footer__nav">
-        <a href="#">Incio</a>
-        <a href="#">Catálogo</a>
-        <a href="#">Nosotros</a>
+        <a href="#top">Incio</a>
+        <a href="#categorias">Catálogo</a>
+        <a href="#nosotros">Nosotros</a>
       </nav>
       <div class="footer__contact">
         <p>+ 57 3178616869</p>
@@ -155,7 +187,7 @@
   </footer>
 
   <!-- WHATSAPP FLOTANTE -->
-  <a class="whatsapp-fab" href="#" aria-label="Escríbenos por WhatsApp">
+  <a class="whatsapp-fab" href="https://wa.me/message/ISVNRLUQCE27G1" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16 3C9.373 3 4 8.373 4 15c0 2.386.7 4.607 1.905 6.47L4 29l7.72-1.865A11.94 11.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Z" fill="#25D366"/>
       <path d="M22.47 18.53c-.33-.165-1.95-.96-2.253-1.07-.303-.11-.523-.165-.744.165-.22.33-.853 1.07-1.046 1.29-.193.22-.386.248-.716.083-.33-.165-1.393-.513-2.653-1.637-.981-.875-1.644-1.956-1.837-2.286-.193-.33-.02-.508.145-.673.149-.148.33-.386.495-.578.165-.193.22-.33.33-.55.11-.22.055-.413-.028-.578-.083-.165-.744-1.793-1.02-2.456-.269-.646-.542-.558-.744-.568-.193-.01-.413-.012-.633-.012-.22 0-.578.083-.88.413-.303.33-1.155 1.13-1.155 2.756 0 1.626 1.183 3.197 1.348 3.418.165.22 2.328 3.554 5.64 4.984.788.34 1.403.543 1.883.695.791.252 1.511.216 2.081.131.635-.095 1.95-.797 2.226-1.567.276-.77.276-1.43.193-1.567-.083-.138-.303-.22-.633-.385Z" fill="#fff"/>
