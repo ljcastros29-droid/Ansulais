@@ -77,6 +77,13 @@ button {
 
 .logo--header {
   font-size: 1.5rem;
+  grid-column: 2;
+  justify-self: center;
+}
+
+.logo-icon--header {
+  height: 30px;
+  width: auto;
 }
 
 .logo--hero {
@@ -89,9 +96,9 @@ button {
 .site-header {
   position: relative;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   background: var(--black);
   padding: 18px 20px;
 }
@@ -105,11 +112,20 @@ button {
   justify-content: center;
 }
 
+.icon-btn:first-child {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.icon-btn:last-child {
+  grid-column: 3;
+  justify-self: end;
+}
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
   aspect-ratio: 390 / 320;
-  overflow: hidden;
   background: #2a2318;
 }
 
